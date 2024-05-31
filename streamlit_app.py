@@ -32,3 +32,22 @@ if user_input:
     bold_output = bold_text(user_input)
     st.write("Transformed Bold Text:")
     st.write(f"**{bold_output}**")
+
+# Donation button on the main page
+st.markdown(
+    """
+    <a href='https://ko-fi.com/X7X47Q0EG' target='_blank'><img height='36' style='border:0px;height:36px;' 
+    src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>        
+    """,
+    unsafe_allow_html=True,
+)
+
+# Donation button in the sidebar
+with st.sidebar:
+    st.markdown(
+        """
+ <a href='https://ko-fi.com/C0C6YRSIF' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' 
+ border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>     
+    """,
+        unsafe_allow_html=True,
+    )
