@@ -1,5 +1,5 @@
 import streamlit as st
-
+# Can be found here : https://boldonlinkedin-to1gwllzmfs.streamlit.app/
 # Function to convert normal text to bold text
 def bold_text(text):
     bold_dict = {
