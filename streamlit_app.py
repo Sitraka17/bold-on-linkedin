@@ -1,6 +1,7 @@
 import streamlit as st
-# Trying this
-
+st.set_page_config(
+        page_title="Bold Linkedin Posts",
+)
 # Function to convert normal text to bold text
 def bold_text(text):
     bold_dict = {
