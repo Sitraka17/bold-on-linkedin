@@ -1,5 +1,5 @@
 import streamlit as st
-# Can be found here : https://boldonlinkedin-to1gwllzmfs.streamlit.app/
+
 # Function to convert normal text to bold text
 def bold_text(text):
     bold_dict = {
@@ -28,27 +28,28 @@ st.write("Enter your text below to transform it into bold text for LinkedIn:")
 # Text input from user
 user_input = st.text_area("Enter your text here")
 
-if user_input:
-    bold_output = bold_text(user_input)
-    st.write("Transformed Bold Text:")
-    st.write(f"**{bold_output}**")
+# Transform button
+if st.button("Transform"):
+    if user_input:
+        bold_output = bold_text(user_input)
+        st.write("Transformed Bold Text:")
+        st.write(f"{bold_output}")
 
 # Donation button on the main page
 st.markdown(
     """
-    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-    <script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'C0C6YRSIF');kofiwidget2.draw();</script>
+    <a href='https://ko-fi.com/X7X47Q0EG' target='_blank'><img height='36' style='border:0px;height:36px;' 
+    src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>        
     """,
     unsafe_allow_html=True,
 )
 
-
 # Donation button in the sidebar
 with st.sidebar:
+    st.image("SitrakasLogo.png")
     st.markdown(
         """
- <a href='https://ko-fi.com/C0C6YRSIF' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' 
- border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>     
-    """,
+   <a href='https://ko-fi.com/C0C6YRSIF' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+   """,
         unsafe_allow_html=True,
     )
