@@ -1,7 +1,9 @@
 import streamlit as st
+
 st.set_page_config(
-        page_title="My Page Title",
+    page_title="My Page Title",
 )
+
 # Function to convert normal text to bold text
 def bold_text(text):
     bold_dict = {
@@ -20,7 +22,6 @@ def bold_text(text):
         '&': '⦘', '*': '⦙', '@': '⦧', '#': '⦦', '$': '⦚', '%': '⦜', '^': '⦣', '_': '⦪',
         '=': '⦭', '~': '⧃', '<': '⫲', '>': '⫳', '|': '⦒', ' ': ' '
     }
-    
     return ''.join(bold_dict.get(c, c) for c in text)
 
 # Function to convert normal text to italic text
@@ -41,7 +42,6 @@ def italic_text(text):
         '&': '&', '*': '*', '@': '@', '#': '#', '$': '$', '%': '%', '^': '^', '_': '_',
         '=': '=', '~': '~', '<': '<', '>': '>', '|': '|', ' ': ' '
     }
-    
     return ''.join(italic_dict.get(c, c) for c in text)
 
 # Function to convert normal text to bold italic text
@@ -62,8 +62,11 @@ def bold_italic_text(text):
         '&': '&', '*': '*', '@': '@', '#': '#', '$': '$', '%': '%', '^': '^', '_': '_',
         '=': '=', '~': '~', '<': '<', '>': '>', '|': '|', ' ': ' '
     }
-    
     return ''.join(bold_italic_dict.get(c, c) for c in text)
+
+# Function to add emojis
+def add_emojis(text, emoji):
+    return f"{emoji} {text} {emoji}"
 
 # Streamlit app
 st.title("LinkedIn Text Formatter")
@@ -73,7 +76,10 @@ st.write("Enter your text below to transform it into bold, italic, or bold itali
 user_input = st.text_area("Enter your text here")
 
 # Transformation type selection
-transformation_type = st.selectbox("Choose the transformation type", ["Bold", "Italic", "Bold Italic"])
+transformation_type = st.selectbox("Choose the transformation type", ["Bold", "Italic", "Bold Italic", "Add Emoji"])
+
+# Emoji selection
+emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
 
 # Transform button
 if st.button("Transform"):
@@ -84,7 +90,9 @@ if st.button("Transform"):
             transformed_output = italic_text(user_input)
         elif transformation_type == "Bold Italic":
             transformed_output = bold_italic_text(user_input)
-        
+        elif transformation_type == "Add Emoji":
+            transformed_output = add_emojis(user_input, emoji)
+
         st.write("Transformed Text:")
         st.write(f"{transformed_output}")
 
@@ -106,4 +114,3 @@ with st.sidebar:
    """,
         unsafe_allow_html=True,
     )
-
