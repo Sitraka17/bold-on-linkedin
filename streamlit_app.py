@@ -1,6 +1,6 @@
 import streamlit as st
 st.set_page_config(
-        page_title="Bold Linkedin Posts",
+        page_title="My Page Title",
 )
 # Function to convert normal text to bold text
 def bold_text(text):
@@ -91,7 +91,7 @@ if st.button("Transform"):
 # Donation button on the main page
 st.markdown(
     """
-    <a href='https://ko-fi.com/X7X47Q0EG' target='_blank'><img height='36' style='border:0px;height:36px;' 
+    <a href='https://ko-fi.com/sitrakaforler' target='_blank'><img height='36' style='border:0px;height:36px;' 
     src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>        
     """,
     unsafe_allow_html=True,
@@ -106,3 +106,4 @@ with st.sidebar:
    """,
         unsafe_allow_html=True,
     )
+
