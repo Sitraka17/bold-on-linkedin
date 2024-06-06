@@ -22,3 +22,6 @@ Add an image at the top of your sidebar, and a smaller logo when the sidebar is 
 Shared this : https://www.linkedin.com/feed/update/urn:li:activity:7203274239636848640/ 
 
 Pet Rock $3.95, Millionaire en 6 mois lol 
+
+
+Co-Writter ? DAM bro there are a lot of apps like that x) 
