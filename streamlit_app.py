@@ -1,6 +1,7 @@
 import streamlit as st
 #letzzzz go
 # What could be added ? 
+# A web app to have all the tools to help people to create content ? (dammmm BRO the idea is so common lol ) 
 st.set_page_config(
     page_title="My Page Title",
 )
