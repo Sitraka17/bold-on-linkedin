@@ -1,9 +1,9 @@
 import streamlit as st
 #letzzzz go
+# What could be added ? 
 st.set_page_config(
     page_title="My Page Title",
 )
-
 # Function to convert normal text to bold text
 def bold_text(text):
     bold_dict = {
