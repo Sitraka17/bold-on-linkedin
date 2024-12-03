@@ -80,7 +80,7 @@ EMOJI_CATEGORIES = {
 }
 
 # Streamlit app
-st.title("Text Formatter & Emojis without ads")
+st.title("Text Formatter & Emojis")
 st.write("Enter your text and choose your transformation style!")
 
 # Create columns for input and options
