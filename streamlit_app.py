@@ -115,26 +115,3 @@ with st.sidebar:
    """,
         unsafe_allow_html=True,
     )
-
-    # Transform button
-    if st.button("Transform", type="primary"):
-        if user_input:
-            transformed_output = transform_text(
-                user_input, 
-                transformation_type, 
-                emoji
-            )
-            
-            st.subheader("Transformed Text:")
-            st.code(transformed_output, language=None)
-            
-            # Copy to clipboard button
-            st.button("📋 Copy to Clipboard", 
-                      on_click=lambda: st.write(f"Copied: {transformed_output}"))
-
-    # Footer
-    st.markdown("---")
-    st.markdown("*Made with ❤️ by Sitraka*")
-
-if __name__ == "__main__":
-    main()
