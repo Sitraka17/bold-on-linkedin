@@ -82,28 +82,20 @@ transformation_type = st.selectbox("Choose the transformation type", ["Bold", "I
 # Emoji selection
 emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
 
-    # Transform button
-    if st.button("Transform", type="primary"):
-        if user_input:
-            transformed_output = transform_text(
-                user_input, 
-                transformation_type, 
-                emoji
-            )
-            
-            st.subheader("Transformed Text:")
-            st.code(transformed_output, language=None)
-            
-            # Copy to clipboard button
-            st.button("📋 Copy to Clipboard", 
-                      on_click=lambda: st.write(f"Copied: {transformed_output}"))
+# Transform button
+if st.button("Transform"):
+    if user_input:
+        if transformation_type == "Bold":
+            transformed_output = bold_text(user_input)
+        elif transformation_type == "Italic":
+            transformed_output = italic_text(user_input)
+        elif transformation_type == "Bold Italic":
+            transformed_output = bold_italic_text(user_input)
+        elif transformation_type == "Add Emoji":
+            transformed_output = add_emojis(user_input, emoji)
 
-    # Footer
-    st.markdown("---")
-    st.markdown("*Made with ❤️ by Sitraka*")
-
-if __name__ == "__main__":
-    main()
+        st.write("Transformed Text:")
+        st.write(f"{transformed_output}")
 
 # Donation button on the main page
 st.markdown(
