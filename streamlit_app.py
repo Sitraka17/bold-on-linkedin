@@ -1,10 +1,11 @@
 import streamlit as st
-#letzzzz go
-# What could be added ? 
-# A web app to have all the tools to help people to create content ? (dammmm BRO the idea is so common lol ) 
+
+# Set page configuration
 st.set_page_config(
-    page_title="My Page Title",
+    page_title="LinkedIn Text Formatter",
+    page_icon="💬"
 )
+
 # Function to convert normal text to bold text
 def bold_text(text):
     bold_dict = {
@@ -69,33 +70,75 @@ def bold_italic_text(text):
 def add_emojis(text, emoji):
     return f"{emoji} {text} {emoji}"
 
+# Expanded emoji dictionary with more categories
+EMOJI_CATEGORIES = {
+    "Smileys": ["😀", "😂", "🤣", "😊", "🙃", "😉", "🥹", "😍"],
+    "Professional": ["💼", "🚀", "📊", "💡", "🏆", "⭐", "💯", "🤝"],
+    "Celebrations": ["🎉", "🎊", "🥳", "🎂", "🍾", "🎈", "👏", "🎓"],
+    "Nature": ["🌟", "🌈", "🍀", "🌻", "🌍", "🍃", "🔆", "🌞"],
+    "Hand Gestures": ["👍", "👏", "✌️", "🤘", "👊", "🙌", "✨", "🤲"]
+}
+
 # Streamlit app
 st.title("LinkedIn Text Formatter")
-st.write("Enter your text below to transform it into bold, italic, or bold italic text for LinkedIn:")
+st.write("Enter your text and choose your transformation style!")
 
-# Text input from user
-user_input = st.text_area("Enter your text here")
+# Create columns for input and options
+col1, col2 = st.columns([2, 1])
 
-# Transformation type selection
-transformation_type = st.selectbox("Choose the transformation type", ["Bold", "Italic", "Bold Italic", "Add Emoji"])
+with col1:
+    # Text input from user
+    user_input = st.text_area("Enter your text here", height=200)
 
-# Emoji selection
-emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
+with col2:
+    # Transformation type selection with visual radio buttons
+    st.markdown("**Select Transformation:**")
+    transformation_type = st.radio(
+        "Choose the transformation type",
+        ["Bold", "Italic", "Bold Italic", "Add Emoji"],
+        help="Select how you want to style your text for LinkedIn"
+    )
 
-# Transform button
-if st.button("Transform"):
-    if user_input:
-        if transformation_type == "Bold":
-            transformed_output = bold_text(user_input)
-        elif transformation_type == "Italic":
-            transformed_output = italic_text(user_input)
-        elif transformation_type == "Bold Italic":
-            transformed_output = bold_italic_text(user_input)
-        elif transformation_type == "Add Emoji":
-            transformed_output = add_emojis(user_input, emoji)
+    # Emoji selection with category tabs
+    st.markdown("**Select Emoji:**")
+    emoji_tab = st.selectbox(
+        "Choose Emoji Category", 
+        list(EMOJI_CATEGORIES.keys()),
+        help="Select a category of emojis"
+    )
+    
+    # Create emoji selection as buttons
+    emoji_columns = st.columns(4)
+    selected_emoji = None
+    
+    for i, emoji in enumerate(EMOJI_CATEGORIES[emoji_tab]):
+        with emoji_columns[i % 4]:
+            if st.button(emoji, key=f"emoji_{emoji}"):
+                selected_emoji = emoji
 
-        st.write("Transformed Text:")
-        st.write(f"{transformed_output}")
+# Transform button with improved styling
+transform_col1, transform_col2 = st.columns([1, 3])
+
+with transform_col1:
+    if st.button("Transform", type="primary"):
+        if user_input:
+            if transformation_type == "Bold":
+                transformed_output = bold_text(user_input)
+            elif transformation_type == "Italic":
+                transformed_output = italic_text(user_input)
+            elif transformation_type == "Bold Italic":
+                transformed_output = bold_italic_text(user_input)
+            elif transformation_type == "Add Emoji" and selected_emoji:
+                transformed_output = add_emojis(user_input, selected_emoji)
+            else:
+                transformed_output = "Please select an emoji first!"
+            
+            # Display transformed text in a highlighted box
+            st.markdown("**Transformed Text:**")
+            st.code(transformed_output, language="text")
+            
+            # Copy to clipboard button
+            st.button("Copy to Clipboard", on_click=lambda: st.write(transformed_output))
 
 # Donation button on the main page
 st.markdown(
