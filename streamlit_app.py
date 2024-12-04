@@ -3,7 +3,9 @@ import streamlit as st
 # What could be added ? 
 # A web app to have all the tools to help people to create content ? (dammmm BRO the idea is so common lol ) 
 st.set_page_config(
-    page_title="My Page Title",
+        page_title="Emoji Text Formatter",
+        page_icon="✨",
+        layout="centered"
 )
 # Function to convert normal text to bold text
 def bold_text(text):
