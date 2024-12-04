@@ -84,30 +84,15 @@ transformation_type = st.selectbox("Choose the transformation type", ["Bold", "I
 # Emoji selection
 #emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
 
-import streamlit as st
 
-# List of 50 emojis
-emoji_options = [
+emoji_options = st.selectbox("Choose an emoji",  [
     "😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼", 
     "😇", "🤩", "😜", "🤔", "😋", "😆", "🙃", "😎", "😬", "😭", 
     "😱", "🥺", "😅", "🥴", "🤪", "😤", "😳", "😈", "👻", "💀", 
     "👽", "🤖", "🦄", "🐶", "🐱", "🐭", "🐹", "🦊", "🐻", "🐼", 
     "🐯", "🦁", "🐮", "🐷", "🐸", "🦋", "🌸", "🌼", "🌺", "🌈"
-]
+])
 
-# Segregating categories
-categories = {
-    "Smileys": emoji_options[:10],
-    "Animals": emoji_options[10:30],
-    "Nature": emoji_options[30:]
-}
-
-# Create a sidebar for category selection
-category = st.sidebar.selectbox("Choose a category", list(categories.keys()))
-
-# Display emojis for the selected category
-st.title(f"Emojis from the {category} category")
-selected_emoji = st.selectbox("Pick an emoji", categories[category])
 
 
 # Transform button
