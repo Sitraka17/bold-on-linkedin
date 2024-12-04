@@ -108,13 +108,13 @@ with col2:
     )
     
     # Create emoji selection as buttons
-    emoji_columns = st.columns(4)
-    selected_emoji = None
+#    emoji_columns = st.columns(4)
+ #   selected_emoji = None
     
-    for i, emoji in enumerate(EMOJI_CATEGORIES[emoji_tab]):
-        with emoji_columns[i % 4]:
-            if st.button(emoji, key=f"emoji_{emoji}"):
-                selected_emoji = emoji
+ #   for i, emoji in enumerate(EMOJI_CATEGORIES[emoji_tab]):
+ #       with emoji_columns[i % 4]:
+ #           if st.button(emoji, key=f"emoji_{emoji}"):
+ #               selected_emoji = emoji
 # List of 20 emojis to choose from
 emoji_list = [
     "😀", "😂", "😊", "😍", "😎",
