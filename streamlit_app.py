@@ -82,15 +82,54 @@ transformation_type = st.selectbox("Choose the transformation type", ["Bold", "I
 # Emoji selection
 #emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
 
-# Enhance UX/UI with emojis in a grid-like style
-emoji = st.radio(
-    "Choose an emoji:",
-    options=["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"],
-    index=0,  # Default selected emoji
-    help="Click to select your favorite emoji"
-)
+# Create a grid of emoji buttons
+emoji_options = ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"]
 
+# Display the emojis as buttons
+col1, col2, col3 = st.columns(3)  # Adjust the number of columns for layout
 
+with col1:
+    emoji_1 = st.button("😀")
+with col2:
+    emoji_2 = st.button("😂")
+with col3:
+    emoji_3 = st.button("😎")
+with col1:
+    emoji_4 = st.button("🥳")
+with col2:
+    emoji_5 = st.button("👍")
+with col3:
+    emoji_6 = st.button("🔥")
+with col1:
+    emoji_7 = st.button("💯")
+with col2:
+    emoji_8 = st.button("🚀")
+with col3:
+    emoji_9 = st.button("⭐")
+with col1:
+    emoji_10 = st.button("💼")
+
+# Store selected emoji
+if emoji_1:
+    selected_emoji = "😀"
+elif emoji_2:
+    selected_emoji = "😂"
+elif emoji_3:
+    selected_emoji = "😎"
+elif emoji_4:
+    selected_emoji = "🥳"
+elif emoji_5:
+    selected_emoji = "👍"
+elif emoji_6:
+    selected_emoji = "🔥"
+elif emoji_7:
+    selected_emoji = "💯"
+elif emoji_8:
+    selected_emoji = "🚀"
+elif emoji_9:
+    selected_emoji = "⭐"
+else:
+    selected_emoji = "💼"
 
 # Transform button
 if st.button("Transform"):
