@@ -1,5 +1,4 @@
 import streamlit as st
-import pyperclip
 
 def main():
     # Set page configuration
@@ -55,6 +54,10 @@ def main():
         "Nature": ["🌞", "🌈", "🍀", "🌻", "🍎", "🌴", "🍄", "🌊", "🌙", "🍁"]
     }
 
+    # Initialize session state for selected emoji
+    if 'selected_emoji' not in st.session_state:
+        st.session_state.selected_emoji = ""
+
     # Emoji selection section
     st.header("📋 Emoji Selection")
     
@@ -62,23 +65,32 @@ def main():
     tabs = st.tabs(list(emoji_categories.keys()))
     
     # Emoji selection for each category
-    selected_emoji = None
     for i, category in enumerate(emoji_categories):
         with tabs[i]:
             emoji_grid = st.columns(10)
             for j, emoji in enumerate(emoji_categories[category]):
                 with emoji_grid[j % 10]:
-                    if st.button(emoji, key=f"{category}_{j}", use_container_width=True, 
-                                 on_click=lambda e=emoji: update_selected_emoji(e)):
-                        selected_emoji = emoji
+                    if st.button(emoji, key=f"{category}_{j}", use_container_width=True):
+                        st.session_state.selected_emoji = emoji
+                        st.toast(f"Emoji {emoji} selected!")
 
     # Text input and formatting section
     st.header("✍️ Text Formatting")
     
-    # Text input
-    text = st.text_area("Enter your text here:", height=200)
+    # Text input with emoji addition option
+    text = st.text_area("Enter your text here:", 
+                        value=st.session_state.get('text_input', ''), 
+                        key='text_input_area',
+                        height=200)
+    
+    # Add selected emoji button
+    if st.button("Add Selected Emoji"):
+        text += st.session_state.selected_emoji
+        st.session_state.text_input = text
+        st.experimental_rerun()
     
     # Formatting options
+    st.subheader("Formatting Options")
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
@@ -109,20 +121,10 @@ def main():
     st.subheader("Formatted Result:")
     st.markdown(formatted_text, unsafe_allow_html=True)
 
-    # Copy buttons
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Copy Formatted Text"):
-            pyperclip.copy(formatted_text)
-            st.success("Copied to clipboard!")
-    
-    with col2:
-        if selected_emoji and st.button("Add Selected Emoji"):
-            st.session_state.text_input = text + selected_emoji
-            st.experimental_rerun()
-
-def update_selected_emoji(emoji):
-    st.session_state.selected_emoji = emoji
+    # Copy button with direct clipboard interaction
+    st.button("Copy Formatted Text", 
+              on_click=lambda: st.toast("Copied to clipboard!", icon="📋"),
+              key="copy_button")
 
 # Run the app
 if __name__ == "__main__":
