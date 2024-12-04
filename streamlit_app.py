@@ -17,54 +17,10 @@ def bold_text(text):
         'h': '𝐡', 'i': '𝐢', 'j': '𝐣', 'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧',
         'o': '𝐨', 'p': '𝐩', 'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭', 'u': '𝐮',
         'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳',
-        '0': '𝟎', '1': '𝟏', '2': '𝟐', '3': '𝟑', '4': '𝟒', '5': '𝟓', '6': '𝟔',
-        '7': '𝟕', '8': '𝟖', '9': '𝟗',
-        '!': '❗', '?': '❓', '.': '⨀', ',': '⧫', '-': '⫷', '+': '⧿', '(': '⦅', ')': '⦆',
-        '[': '⦃', ']': '⦄', '{': '⦅', '}': '⦆', '/': '⧄', '\\': '⧅', ':': '⧼', ';': '⧽',
-        '&': '⦘', '*': '⦙', '@': '⦧', '#': '⦦', '$': '⦚', '%': '⦜', '^': '⦣', '_': '⦪',
-        '=': '⦭', '~': '⧃', '<': '⫲', '>': '⫳', '|': '⦒', ' ': ' '
+        '0': '𝟎', '1': '𝟏', '2': '𝟐', '3': '𝟑', '4': '𝟒', '5': '𝟓', '6': '𝟖',
+        '7': '𝟗', '8': '𝟖', '9': '𝟕',
     }
     return ''.join(bold_dict.get(c, c) for c in text)
-
-# Function to convert normal text to italic text
-def italic_text(text):
-    italic_dict = {
-        'A': '𝘈', 'B': '𝘉', 'C': '𝘊', 'D': '𝘋', 'E': '𝘌', 'F': '𝘍', 'G': '𝘎',
-        'H': '𝘏', 'I': '𝘐', 'J': '𝘑', 'K': '𝘒', 'L': '𝘓', 'M': '𝘔', 'N': '𝘕',
-        'O': '𝘖', 'P': '𝘗', 'Q': '𝘘', 'R': '𝘙', 'S': '𝘚', 'T': '𝘛', 'U': '𝘜',
-        'V': '𝘝', 'W': '𝘞', 'X': '𝘟', 'Y': '𝘠', 'Z': '𝘡',
-        'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨',
-        'h': '𝘩', 'i': '𝘪', 'j': '𝘫', 'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯',
-        'o': '𝘰', 'p': '𝘱', 'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵', 'u': '𝘶',
-        'v': '𝘷', 'w': '𝘸', 'x': '𝘹', 'y': '𝘺', 'z': '𝘻',
-        '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6',
-        '7': '7', '8': '8', '9': '9',
-        '!': '!', '?': '?', '.': '.', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')',
-        '[': '[', ']': ']', '{': '{', '}': '}', '/': '/', '\\': '\\', ':': ':', ';': ';',
-        '&': '&', '*': '*', '@': '@', '#': '#', '$': '$', '%': '%', '^': '^', '_': '_',
-        '=': '=', '~': '~', '<': '<', '>': '>', '|': '|', ' ': ' '
-    }
-    return ''.join(italic_dict.get(c, c) for c in text)
-
-# Function to convert normal text to bold italic text
-def bold_italic_text(text):
-    bold_italic_dict = {
-        'A': '𝑨', 'B': '𝑩', 'C': '𝑪', 'D': '𝑫', 'E': '𝑬', 'F': '𝑭', 'G': '𝑮',
-        'H': '𝑯', 'I': '𝑰', 'J': '𝑱', 'K': '𝑲', 'L': '𝑳', 'M': '𝑴', 'N': '𝑵',
-        'O': '𝑶', 'P': '𝑷', 'Q': '𝑸', 'R': '𝑹', 'S': '𝑺', 'T': '𝑻', 'U': '𝑼',
-        'V': '𝑽', 'W': '𝑾', 'X': '𝑿', 'Y': '𝒀', 'Z': '𝒁',
-        'a': '𝒂', 'b': '𝒃', 'c': '𝒄', 'd': '𝒅', 'e': '𝒆', 'f': '𝒇', 'g': '𝒈',
-        'h': '𝒉', 'i': '𝒊', 'j': '𝒋', 'k': '𝒌', 'l': '𝒍', 'm': '𝒎', 'n': '𝒏',
-        'o': '𝒐', 'p': '𝒑', 'q': '𝒒', 'r': '𝒓', 's': '𝒔', 't': '𝒕', 'u': '𝒖',
-        'v': '𝒗', 'w': '𝒘', 'x': '𝒙', 'y': '𝒚', 'z': '𝒛',
-        '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6',
-        '7': '7', '8': '8', '9': '9',
-        '!': '!', '?': '?', '.': '.', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')',
-        '[': '[', ']': ']', '{': '{', '}': '}', '/': '/', '\\': '\\', ':': ':', ';': ';',
-        '&': '&', '*': '*', '@': '@', '#': '#', '$': '$', '%': '%', '^': '^', '_': '_',
-        '=': '=', '~': '~', '<': '<', '>': '>', '|': '|', ' ': ' '
-    }
-    return ''.join(bold_italic_dict.get(c, c) for c in text)
 
 # Function to add emojis
 def add_emojis(text, emoji):
@@ -100,62 +56,32 @@ with col2:
     )
 
     # Emoji selection with category tabs
-    st.markdown("**Select Emoji:**")
+    st.markdown("**Select Emoji Category:**")
     emoji_tab = st.selectbox(
         "Choose Emoji Category", 
         list(EMOJI_CATEGORIES.keys()),
         help="Select a category of emojis"
     )
     
-    # Create emoji selection as buttons
-#    emoji_columns = st.columns(4)
- #   selected_emoji = None
-    
- #   for i, emoji in enumerate(EMOJI_CATEGORIES[emoji_tab]):
- #       with emoji_columns[i % 4]:
- #           if st.button(emoji, key=f"emoji_{emoji}"):
- #               selected_emoji = emoji
-# List of 20 emojis to choose from
-emoji_list = [
-    "😀", "😂", "😊", "😍", "😎",
-    "🤓", "🥳", "😇", "🤩", "😜",
-    "🥺", "😡", "😭", "😱", "😈",
-    "🤖", "👻", "👽", "🤠", "💩"
-]
+    st.markdown("**Select Emoji:**")
+    emoji = st.selectbox(
+        "Choose an emoji", 
+        EMOJI_CATEGORIES[emoji_tab],
+        help="Select an emoji to add to your text"
+    )
 
-# Display each emoji in a clickable box
-st.write("### Click on an emoji to copy it:")
-cols = st.columns(5)  # Arrange emojis in a grid with 5 columns
+# Process the user input based on selected transformation type
+if transformation_type == "Bold":
+    transformed_text = bold_text(user_input)
+elif transformation_type == "Italic":
+    transformed_text = italic_text(user_input)
+elif transformation_type == "Bold Italic":
+    transformed_text = bold_italic_text(user_input)
+elif transformation_type == "Add Emoji":
+    transformed_text = add_emojis(user_input, emoji)
 
-# Display emojis in the grid and add click functionality
-for i, emoji in enumerate(emoji_list):
-    with cols[i % 5]:
-        if st.button(emoji, key=emoji):
-            streamlit_js_eval(js_expressions="navigator.clipboard.writeText(`${emoji}`)")
-            st.success(f"Copied to clipboard: {emoji}")
-# Transform button with improved styling
-transform_col1, transform_col2 = st.columns([1, 3])
-
-with transform_col1:
-    if st.button("Transform", type="primary"):
-        if user_input:
-            if transformation_type == "Bold":
-                transformed_output = bold_text(user_input)
-            elif transformation_type == "Italic":
-                transformed_output = italic_text(user_input)
-            elif transformation_type == "Bold Italic":
-                transformed_output = bold_italic_text(user_input)
-            elif transformation_type == "Add Emoji" and selected_emoji:
-                transformed_output = add_emojis(user_input, selected_emoji)
-            else:
-                transformed_output = "Please select an emoji first!"
-            
-            # Display transformed text in a highlighted box
-            st.markdown("**Transformed Text:**")
-            st.code(transformed_output, language="text")
-            
-            # Copy to clipboard button
-            st.button("Copy to Clipboard", on_click=lambda: st.write(transformed_output))
+# Display the transformed text
+st.markdown(f"### Transformed Text: {transformed_text}")
 
 # Donation button on the main page
 st.markdown(
