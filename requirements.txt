@@ -6,3 +6,4 @@ emojis
 chardet
 cryptography
 streamlit_js_eval
+pyperclip
