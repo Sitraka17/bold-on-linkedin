@@ -81,55 +81,26 @@ transformation_type = st.selectbox("Choose the transformation type", ["Bold", "I
 
 # Emoji selection
 #emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
-
-# Create a grid of emoji buttons
+# List of emojis
 emoji_options = ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"]
 
-# Display the emojis as buttons
-col1, col2, col3 = st.columns(3)  # Adjust the number of columns for layout
+# Convert the emoji list into a DataFrame for easy display
+emoji_df = pd.DataFrame(emoji_options, columns=["Emoji"])
 
-with col1:
-    emoji_1 = st.button("😀")
-with col2:
-    emoji_2 = st.button("😂")
-with col3:
-    emoji_3 = st.button("😎")
-with col1:
-    emoji_4 = st.button("🥳")
-with col2:
-    emoji_5 = st.button("👍")
-with col3:
-    emoji_6 = st.button("🔥")
-with col1:
-    emoji_7 = st.button("💯")
-with col2:
-    emoji_8 = st.button("🚀")
-with col3:
-    emoji_9 = st.button("⭐")
-with col1:
-    emoji_10 = st.button("💼")
+# Display the emojis as a dataframe
+st.dataframe(emoji_df, use_container_width=True)
 
-# Store selected emoji
-if emoji_1:
-    selected_emoji = "😀"
-elif emoji_2:
-    selected_emoji = "😂"
-elif emoji_3:
-    selected_emoji = "😎"
-elif emoji_4:
-    selected_emoji = "🥳"
-elif emoji_5:
-    selected_emoji = "👍"
-elif emoji_6:
-    selected_emoji = "🔥"
-elif emoji_7:
-    selected_emoji = "💯"
-elif emoji_8:
-    selected_emoji = "🚀"
-elif emoji_9:
-    selected_emoji = "⭐"
-else:
-    selected_emoji = "💼"
+# Make emojis clickable by using the `st.button()` functionality
+selected_emoji = None
+for emoji in emoji_options:
+    if st.button(emoji, key=emoji):
+        selected_emoji = emoji
+
+
+
+
+
+
 
 # Transform button
 if st.button("Transform"):
