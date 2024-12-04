@@ -1,27 +1,11 @@
 import streamlit as st
 
 def main():
-    # Set page configuration
-    st.set_page_config(
-        page_title="Emoji Text Formatter",
-        page_icon="✨",
-        layout="centered"
-    )
+    st.set_page_config(page_title="Emoji Picker", page_icon="😀")
 
-    # Custom CSS for improved styling
-    st.markdown("""
-    <style>
-    .stApp {
-        background-color: #f0f2f6;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+    st.title("📋 Emoji Picker & Text Formatter")
 
-    # Title and description
-    st.title("🎨 Emoji Text Formatter")
-    st.write("Select emojis and format your text with ease!")
-
-    # Popular emojis categorized
+    # Emoji categories with more options
     emoji_categories = {
         "Faces": ["😀", "😍", "😢", "😎", "🤔", "😱", "🥳", "😴", "🤯", "😇"],
         "Animals": ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯"],
@@ -29,38 +13,23 @@ def main():
         "Nature": ["🌞", "🌈", "🍀", "🌻", "🍎", "🌴", "🍄", "🌊", "🌙", "🍁"]
     }
 
-    # Emoji selection section
-    st.header("📋 Emoji Selection")
+    # Emoji selection
+    st.header("Select Emojis")
+    selected_tab = st.radio("Choose Emoji Category", list(emoji_categories.keys()), horizontal=True)
     
-    # Create tabs for emoji categories
-    tabs = st.tabs(list(emoji_categories.keys()))
-    
-    # Selected emoji placeholder
-    selected_emoji = st.empty()
-    
-    # Emoji selection for each category
-    chosen_emoji = None
-    for i, category in enumerate(emoji_categories):
-        with tabs[i]:
-            emoji_grid = st.columns(10)
-            for j, emoji in enumerate(emoji_categories[category]):
-                with emoji_grid[j % 10]:
-                    if st.button(emoji, key=f"{category}_{j}", use_container_width=True):
-                        chosen_emoji = emoji
-                        selected_emoji.text(f"Selected Emoji: {chosen_emoji}")
+    # Display emojis in grid
+    emoji_grid = st.columns(10)
+    for i, emoji in enumerate(emoji_categories[selected_tab]):
+        with emoji_grid[i % 10]:
+            if st.button(emoji, key=emoji):
+                st.toast(f"Copied {emoji}")
+                st.code(emoji)
 
-    # Text input section
-    st.header("✍️ Text Formatting")
-    
-    # Text input with emoji addition
-    text = st.text_area("Enter your text here:", height=200)
-    
-    # Add emoji button
-    if chosen_emoji and st.button("Add Selected Emoji"):
-        text += chosen_emoji
-    
+    # Text formatting section
+    st.header("Text Formatter")
+    text = st.text_area("Enter your text", height=200)
+
     # Formatting options
-    st.subheader("Formatting Options")
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
@@ -72,7 +41,7 @@ def main():
     with col4:
         strike = st.checkbox("Strikethrough")
 
-    # Format text function
+    # Format text
     def format_text(text):
         if bold:
             text = f"**{text}**"
@@ -84,17 +53,10 @@ def main():
             text = f"~~{text}~~"
         return text
 
-    # Formatted text
+    # Show formatted text
     formatted_text = format_text(text)
-    
-    # Display formatted text
     st.subheader("Formatted Result:")
     st.markdown(formatted_text, unsafe_allow_html=True)
 
-    # Copy button simulation
-    if st.button("Copy Formatted Text"):
-        st.toast("Copied to clipboard!", icon="📋")
-
-# Run the app
 if __name__ == "__main__":
     main()
