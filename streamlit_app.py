@@ -54,9 +54,11 @@ def main():
         "Nature": ["🌞", "🌈", "🍀", "🌻", "🍎", "🌴", "🍄", "🌊", "🌙", "🍁"]
     }
 
-    # Initialize session state for selected emoji
+    # Initialize session state
     if 'selected_emoji' not in st.session_state:
         st.session_state.selected_emoji = ""
+    if 'text_input' not in st.session_state:
+        st.session_state.text_input = ""
 
     # Emoji selection section
     st.header("📋 Emoji Selection")
@@ -77,17 +79,23 @@ def main():
     # Text input and formatting section
     st.header("✍️ Text Formatting")
     
-    # Text input with emoji addition option
-    text = st.text_area("Enter your text here:", 
-                        value=st.session_state.get('text_input', ''), 
-                        key='text_input_area',
-                        height=200)
+    # Text input
+    text = st.text_area("Enter your text here:", height=200, key="text_input")
     
     # Add selected emoji button
-    if st.button("Add Selected Emoji"):
-        text += st.session_state.selected_emoji
-        st.session_state.text_input = text
-        st.experimental_rerun()
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        st.write(f"Selected Emoji: {st.session_state.selected_emoji}")
+    
+    with col2:
+        if st.button("Add Emoji"):
+            if st.session_state.selected_emoji:
+                # Append emoji to the current text
+                current_text = st.session_state.text_input
+                st.session_state.text_input = current_text + st.session_state.selected_emoji
+                st.experimental_rerun()
+            else:
+                st.warning("Please select an emoji first!")
     
     # Formatting options
     st.subheader("Formatting Options")
@@ -121,10 +129,9 @@ def main():
     st.subheader("Formatted Result:")
     st.markdown(formatted_text, unsafe_allow_html=True)
 
-    # Copy button with direct clipboard interaction
-    st.button("Copy Formatted Text", 
-              on_click=lambda: st.toast("Copied to clipboard!", icon="📋"),
-              key="copy_button")
+    # Copy button simulation
+    if st.button("Copy Formatted Text"):
+        st.toast("Copied to clipboard!", icon="📋")
 
 # Run the app
 if __name__ == "__main__":
