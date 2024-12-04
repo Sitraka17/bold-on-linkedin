@@ -65,50 +65,15 @@ def bold_italic_text(text):
         '=': '=', '~': '~', '<': '<', '>': '>', '|': '|', ' ': ' '
     }
     return ''.join(bold_italic_dict.get(c, c) for c in text)
-
-# Function to add emojis
-def add_emojis(text, emoji):
-    return f"{emoji} {text} {emoji}"
-
-# Expanded emoji dictionary with more categories
-EMOJI_CATEGORIES = {
-    "Smileys": ["😀", "😂", "🤣", "😊", "🙃", "😉", "🥹", "😍"],
-    "Professional": ["💼", "🚀", "📊", "💡", "🏆", "⭐", "💯", "🤝"],
-    "Celebrations": ["🎉", "🎊", "🥳", "🎂", "🍾", "🎈", "👏", "🎓"],
-    "Nature": ["🌟", "🌈", "🍀", "🌻", "🌍", "🍃", "🔆", "🌞"],
-    "Hand Gestures": ["👍", "👏", "✌️", "🤘", "👊", "🙌", "✨", "🤲"]
-}
-
-# Improved emoji selection function
+# Emoji selection section
 def emoji_selection_section():
-    # Emoji category selection
-    selected_category = st.selectbox(
-        "Choose Emoji Category", 
-        list(EMOJI_CATEGORIES.keys()),
-        help="Select a category of emojis"
-    )
-    
-    # Display emojis in a grid
-    st.write("### Click on an emoji to copy it:")
-    emojis = EMOJI_CATEGORIES[selected_category]
-    
-    # Create columns for emoji display
-    cols = st.columns(min(8, len(emojis)))
-    
-    # Store the selected emoji
-    selected_emoji = None
-    
-    # Display emojis
-    for i, emoji in enumerate(emojis):
-        with cols[i % len(cols)]:
-            if st.button(emoji, key=f"emoji_{emoji}"):
-                # Use Streamlit session state to store selected emoji
-                st.session_state.selected_emoji = emoji
-                selected_emoji = emoji
-                st.success(f"Selected: {emoji}")
-    
-    # Return the selected emoji from session state if available
-    return st.session_state.get('selected_emoji')
+    st.markdown("### Select Emojis:")
+    emojis = ["😊", "🚀", "💡", "📊", "🔥", "🌍", "🎉", "❤️", "💻", "📈"]
+    for emoji in emojis:
+        if st.button(emoji, key=f"emoji_{emoji}"):
+            st.session_state.selected_emoji = emoji
+            st.success(f"Copied: {emoji}")
+    return st.session_state.selected_emoji
 
 # Streamlit app
 def main():
