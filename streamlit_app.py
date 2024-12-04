@@ -80,25 +80,7 @@ user_input = st.text_area("Enter your text here")
 transformation_type = st.selectbox("Choose the transformation type", ["Bold", "Italic", "Bold Italic", "Add Emoji"])
 
 # Emoji selection
-#emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
-# List of emojis
-emoji_options = ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"]
-
-# Convert the emoji list into a DataFrame for easy display
-emoji_df = pd.DataFrame(emoji_options, columns=["Emoji"])
-
-# Display the emojis as a dataframe
-st.dataframe(emoji_df, use_container_width=True)
-
-# Make emojis clickable by using the `st.button()` functionality
-selected_emoji = None
-for emoji in emoji_options:
-    if st.button(emoji, key=emoji):
-        selected_emoji = emoji
-
-
-
-
+emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
 
 
 
