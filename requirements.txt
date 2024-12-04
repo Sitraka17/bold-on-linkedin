@@ -4,6 +4,7 @@ streamlit
 pandas
 emojis
 chardet
+st_copy_to_clipboard
 cryptography
 streamlit_js_eval
 pyperclip
