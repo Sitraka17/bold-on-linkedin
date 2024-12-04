@@ -32,39 +32,7 @@ def main():
         layout="wide"
     )
 
-    # Custom CSS for improved visual design
-    st.markdown("""
-    <style>
-    .stApp {
-        background-color: #f0f2f6;
-    }
-    .stTextArea {
-        border-radius: 10px;
-    }
-    .emoji-grid {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        gap: 10px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .emoji-button {
-        font-size: 30px;
-        background-color: #f8f9fa;
-        border: 1px solid #e9ecef;
-        border-radius: 8px;
-        padding: 10px;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    .emoji-button:hover {
-        background-color: #e9ecef;
-        transform: scale(1.1);
-    }
-    </style>
-    """, unsafe_allow_html=True)
+    
 
     # Title and description
     st.title("🎨 Emoji Text Formatter")
