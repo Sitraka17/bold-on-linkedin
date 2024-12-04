@@ -115,7 +115,24 @@ with col2:
         with emoji_columns[i % 4]:
             if st.button(emoji, key=f"emoji_{emoji}"):
                 selected_emoji = emoji
+# List of 20 emojis to choose from
+emoji_list = [
+    "😀", "😂", "😊", "😍", "😎",
+    "🤓", "🥳", "😇", "🤩", "😜",
+    "🥺", "😡", "😭", "😱", "😈",
+    "🤖", "👻", "👽", "🤠", "💩"
+]
 
+# Display each emoji in a clickable box
+st.write("### Click on an emoji to copy it:")
+cols = st.columns(5)  # Arrange emojis in a grid with 5 columns
+
+# Display emojis in the grid and add click functionality
+for i, emoji in enumerate(emoji_list):
+    with cols[i % 5]:
+        if st.button(emoji, key=emoji):
+            streamlit_js_eval(js_expressions="navigator.clipboard.writeText(`${emoji}`)")
+            st.success(f"Copied to clipboard: {emoji}")
 # Transform button with improved styling
 transform_col1, transform_col2 = st.columns([1, 3])
 
