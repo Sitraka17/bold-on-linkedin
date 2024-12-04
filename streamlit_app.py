@@ -4,7 +4,7 @@ def main():
     # Set page configuration
     st.set_page_config(
         page_title="Emoji Text Formatter",
-        page_icon="✨",
+        page_icon="📱",
         layout="centered"
     )
 
