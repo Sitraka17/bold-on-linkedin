@@ -2,53 +2,84 @@ import streamlit as st
 from streamlit_js_eval import streamlit_js_eval
 
 def main():
-    # Set up the app configuration
+    # App configuration
     st.set_page_config(
-        page_title="Emoji Clipboard Copier", 
-        page_icon="📋", 
-        layout="centered"
+        page_title="Ultimate Emoji Clipboard", 
+        page_icon="😀", 
+        layout="wide"
     )
 
-    # Title and description
-    st.title("📋 Emoji Clipboard Copier")
-    st.write("Select and instantly copy emojis to your clipboard!")
-
-    # Comprehensive emoji categories
+    # Extensive emoji dictionary with multiple categories
     emoji_categories = {
-        "Faces": ["😀", "😂", "😊", "😍", "😎", "🤓", "🥳", "😇", "🤩", "😜"],
-        "Emotions": ["🥺", "😡", "😭", "😱", "🤯", "😳", "😴", "🤔", "😉", "😢"],
-        "Characters": ["🤖", "👻", "👽", "🤠", "💩", "🤡", "👾", "🧠", "🤤", "👀"],
-        "Symbols": ["❤️", "🔥", "✨", "👍", "👏", "🎉", "🌈", "🌟", "💯", "🚀"]
+        "Faces & Emotions": [
+            "😀", "😃", "😄", "😁", "😆", "😅", "🤣", "😂", "🙂", "🙃", 
+            "😉", "😊", "😇", "🥰", "😍", "🤩", "😘", "😗", "😚", "😙", 
+            "😋", "😛", "😜", "🤪", "😝", "🤑", "🤗", "🤭", "🤫", "🤔",
+            "🤐", "🤨", "😐", "😑", "😶", "😏", "😒", "🙄", "😬", "😮",
+            "😯", "😪", "😫", "🤤", "😴", "😌", "😛", "😜", "🤤", "🥴"
+        ],
+        "Animals": [
+            "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", 
+            "🦁", "🐮", "🐷", "🐽", "🐸", "🐒", "🦄", "🐴", "🦓", "🦌",
+            "🐑", "🐐", "🐏", "🦙", "🦘", "🦥", "🐓", "🦃", "🦚", "🦜"
+        ],
+        "Food & Drink": [
+            "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", 
+            "🍑", "🥭", "🍍", "🥥", "🥝", "🍅", "🍆", "🥑", "🥦", "🥬",
+            "🥒", "🌽", "🌶️", "🥕", "🥔", "🍞", "🥐", "🥖", "🥨", "🍔"
+        ],
+        "Travel & Places": [
+            "🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚐", 
+            "🚚", "🚛", "🚜", "🛴", "🚲", "🛵", "🏍️", "🚨", "🚥", "🚦",
+            "✈️", "🛩️", "🚁", "🚀", "🛸", "🚢", "⚓", "🛥️", "🚤", "🛳️"
+        ],
+        "Objects & Technology": [
+            "📱", "💻", "🖥️", "🖨️", "⌨️", "🖱️", "💽", "💾", "💿", "📀", 
+            "🎥", "📷", "📸", "📹", "🎬", "📞", "📟", "📠", "📺", "📻",
+            "🧭", "⏰", "🌡️", "🧯", "💡", "🔦", "🕯️", "🪑", "🚪", "🔑"
+        ],
+        "Sports & Activities": [
+            "⚽", "🏀", "🏈", "⚾", "🎾", "🏐", "🏉", "🎱", "🥏", "🏓", 
+            "🏸", "🏒", "🏑", "🥍", "🏏", "🥅", "⛳", "🏹", "🥊", "🥋",
+            "🤿", "🏄", "🏊", "🤽", "🚣", "🏇", "🏂", "🏋️", "🤸", "🤼"
+        ]
     }
 
-    # Emoji selection with tabs
-    st.header("Select an Emoji to Copy")
-    
-    # Create tabs for emoji categories
-    tabs = st.tabs(list(emoji_categories.keys()))
-    
-    # Emoji selection for each category
-    for i, (category, emojis) in enumerate(emoji_categories.items()):
-        with tabs[i]:
-            # Create a grid of emojis
-            emoji_grid = st.columns(5)
-            
-            for j, emoji in enumerate(emojis):
-                with emoji_grid[j % 5]:
-                    # Button to copy emoji
-                    if st.button(emoji, key=f"{category}_{j}", use_container_width=True):
-                        # Use streamlit_js_eval to copy to clipboard
-                        streamlit_js_eval(
-                            js_expressions=f"navigator.clipboard.writeText('{emoji}')",
-                            key=f'copy_{category}_{j}'
-                        )
-                        # Show success toast
-                        st.toast(f"Copied {emoji} to clipboard!", icon="📋")
+    # Title and description
+    st.title("🌈 Ultimate Emoji Clipboard")
+    st.write("Select and copy emojis from various categories!")
 
-    # Informative footer
+    # Sidebar for category selection
+    st.sidebar.header("🔍 Emoji Categories")
+    selected_category = st.sidebar.radio(
+        "Choose an Emoji Category", 
+        list(emoji_categories.keys()), 
+        index=0
+    )
+
+    # Main emoji display area
+    st.header(f"📋 {selected_category} Emojis")
+    st.write("Click an emoji to copy it to your clipboard!")
+
+    # Create emoji grid for selected category
+    emoji_grid = st.columns(10)
+    
+    # Display emojis in grid
+    for i, emoji in enumerate(emoji_categories[selected_category]):
+        with emoji_grid[i % 10]:
+            if st.button(emoji, key=f"{selected_category}_{i}", use_container_width=True):
+                # Copy emoji to clipboard
+                streamlit_js_eval(
+                    js_expressions=f"navigator.clipboard.writeText('{emoji}')",
+                    key=f'copy_{selected_category}_{i}'
+                )
+                # Success notification
+                st.toast(f"Copied {emoji} to clipboard!", icon="📋")
+
+    # Footer with additional information
     st.markdown("---")
-    st.info("💡 Pro Tip: Click on any emoji to instantly copy it to your clipboard!")
+    st.info("💡 Tip: Use the sidebar to switch between emoji categories!")
 
-# Run the app
+# Run the application
 if __name__ == "__main__":
     main()
