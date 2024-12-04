@@ -82,9 +82,16 @@ user_input = st.text_area("Enter your text here")
 transformation_type = st.selectbox("Choose the transformation type", ["Bold", "Italic", "Bold Italic", "Add Emoji"])
 
 # Emoji selection
-emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
+#emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
 
-
+# List of 50 emojis
+emoji_options = st.selectbox("Choose an emoji",[
+    "😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼", 
+    "😇", "🤩", "😜", "🤔", "😋", "😆", "🙃", "😎", "😬", "😭", 
+    "😱", "🥺", "😅", "🥴", "🤪", "😤", "😳", "😈", "👻", "💀", 
+    "👽", "🤖", "🦄", "🐶", "🐱", "🐭", "🐹", "🦊", "🐻", "🐼", 
+    "🐯", "🦁", "🐮", "🐷", "🐸", "🦋", "🌸", "🌼", "🌺", "🌈"
+])
 
 # Transform button
 if st.button("Transform"):
