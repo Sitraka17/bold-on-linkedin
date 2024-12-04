@@ -80,7 +80,17 @@ user_input = st.text_area("Enter your text here")
 transformation_type = st.selectbox("Choose the transformation type", ["Bold", "Italic", "Bold Italic", "Add Emoji"])
 
 # Emoji selection
-emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
+#emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
+
+# Enhance UX/UI with emojis in a grid-like style
+emoji = st.radio(
+    "Choose an emoji:",
+    options=["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"],
+    index=0,  # Default selected emoji
+    help="Click to select your favorite emoji"
+)
+
+
 
 # Transform button
 if st.button("Transform"):
