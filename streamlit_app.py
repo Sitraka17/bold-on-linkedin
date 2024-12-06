@@ -85,7 +85,7 @@ transformation_type = st.selectbox("Choose the transformation type", ["Bold", "I
 #emoji = st.selectbox("Choose an emoji", ["😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼"])
 
 
-emoji_options = st.selectbox("Choose an emoji",  [
+emoji_options = st.selectbox("Choose an emoji to copy paste",  [
     "😀", "😂", "😎", "🥳", "👍", "🔥", "💯", "🚀", "⭐", "💼", 
     "😇", "🤩", "😜", "🤔", "😋", "😆", "🙃", "😎", "😬", "😭", 
     "😱", "🥺", "😅", "🥴", "🤪", "😤", "😳", "😈", "👻", "💀", 
