@@ -46,16 +46,20 @@ if transformation_type == "Add Emojis":
 
 # Apply the selected transformation
 if st.button("Transform"):
-    if transformation_type == "Bold":
-        transformed_text = bold_text(user_input)
-    elif transformation_type == "Italic":
-        transformed_text = italic_text(user_input)
-    elif transformation_type == "Bold Italic":
-        transformed_text = bold_italic_text(user_input)
-    elif transformation_type == "Add Emojis":
-        transformed_text = add_emojis(user_input, emoji)
-    
-    st.text_area("Transformed Text", transformed_text, height=100)
+    if not user_input.strip():  # Check if the input is empty or only whitespace
+        st.error("Please enter some text to transform!")
+    else:
+        if transformation_type == "Bold":
+            transformed_text = bold_text(user_input)
+        elif transformation_type == "Italic":
+            transformed_text = italic_text(user_input)
+        elif transformation_type == "Bold Italic":
+            transformed_text = bold_italic_text(user_input)
+        elif transformation_type == "Add Emojis":
+            transformed_text = add_emojis(user_input, emoji)
+        
+        # Display the transformed text
+        st.text_area("Transformed Text", transformed_text, height=100)
 
 # Add emoji box at the bottom
 st.write("---")
