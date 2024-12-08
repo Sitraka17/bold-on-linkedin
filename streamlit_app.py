@@ -75,19 +75,37 @@ st.write("---")
 st.subheader("Quick Emoji Selector")
 st.write("Add these emojis to your post for extra flair!")
 
-# Display a grid of emojis as clickable buttons
-emoji_list = [
-    "😀", "😂", "😎", "🔥", "🚀", "💼", "💯", "⭐", "😇", "🤩",
-    "😅", "😍", "😡", "😱", "🧐", "😏", "😋", "🤔", "🙄", "😢",
-    "🎉", "👍", "👎", "🤷‍♂️", "🤷‍♀️", "💪", "🙏", "👏", "💔", "💖",
-    "🌟", "🌈", "⚡", "🍕", "🍔", "🎁", "🏆", "📚", "✈️", "🖥️"
-]
-selected_emojis = st.multiselect("Select emojis to append to your text:", emoji_list, default=[])
+import streamlit as st
 
+# Categories of emojis
+emojis = {
+    "Smileys": ["😀", "😂", "😎", "😇", "🤩", "😅", "😍", "😏", "😋", "🤔"],
+    "Actions": ["👍", "👎", "💪", "🙏", "👏", "🤷‍♂️", "🤷‍♀️", "🙄", "🎉", "😱"],
+    "Symbols": ["💼", "💯", "⭐", "🔥", "🚀", "⚡", "💔", "💖", "🌟", "🌈"],
+    "Objects": ["🍕", "🍔", "🎁", "🏆", "📚", "✈️", "🖥️"],
+}
+
+# Tabs for categories
+tab1, tab2, tab3, tab4 = st.tabs(emojis.keys())
+
+selected_emojis = []
+
+with tab1:
+    selected_emojis += st.multiselect("Select Smileys:", emojis["Smileys"], default=[])
+with tab2:
+    selected_emojis += st.multiselect("Select Actions:", emojis["Actions"], default=[])
+with tab3:
+    selected_emojis += st.multiselect("Select Symbols:", emojis["Symbols"], default=[])
+with tab4:
+    selected_emojis += st.multiselect("Select Objects:", emojis["Objects"], default=[])
+
+# Display selected emojis in a text area
 if selected_emojis:
+    user_input = st.text_input("Enter your text here:")
     st.text_area(
         "Your Text with Emojis",
         f"{user_input} {' '.join(selected_emojis)}",
         height=100
     )
+
 
