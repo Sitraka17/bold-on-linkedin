@@ -108,4 +108,22 @@ if selected_emojis:
         height=100
     )
 
+# Donation button on the main page
+st.markdown(
+    """
+    <a href='https://ko-fi.com/sitrakaforler' target='_blank'><img height='36' style='border:0px;height:36px;' 
+    src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>        
+    """,
+    unsafe_allow_html=True,
+)
+
+# Donation button in the sidebar
+with st.sidebar:
+    st.image("SitrakasLogo.png")
+    st.markdown(
+        """
+   <a href='https://ko-fi.com/C0C6YRSIF' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+   """,
+        unsafe_allow_html=True,
+    )
 
