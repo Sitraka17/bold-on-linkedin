@@ -76,7 +76,12 @@ st.subheader("Quick Emoji Selector")
 st.write("Add these emojis to your post for extra flair!")
 
 # Display a grid of emojis as clickable buttons
-emoji_list = ["😀", "😂", "😎", "🔥", "🚀", "💼", "💯", "⭐", "😇", "🤩"]
+emoji_list = [
+    "😀", "😂", "😎", "🔥", "🚀", "💼", "💯", "⭐", "😇", "🤩",
+    "😅", "😍", "😡", "😱", "🧐", "😏", "😋", "🤔", "🙄", "😢",
+    "🎉", "👍", "👎", "🤷‍♂️", "🤷‍♀️", "💪", "🙏", "👏", "💔", "💖",
+    "🌟", "🌈", "⚡", "🍕", "🍔", "🎁", "🏆", "📚", "✈️", "🖥️"
+]
 selected_emojis = st.multiselect("Select emojis to append to your text:", emoji_list, default=[])
 
 if selected_emojis:
@@ -85,3 +90,4 @@ if selected_emojis:
         f"{user_input} {' '.join(selected_emojis)}",
         height=100
     )
+
