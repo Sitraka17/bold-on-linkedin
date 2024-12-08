@@ -69,3 +69,19 @@ if st.button("Transform"):
 
     st.subheader("Transformed Text")
     st.text(transformed_text)
+
+# Add emoji box at the bottom
+st.write("---")
+st.subheader("Quick Emoji Selector")
+st.write("Add these emojis to your post for extra flair!")
+
+# Display a grid of emojis as clickable buttons
+emoji_list = ["😀", "😂", "😎", "🔥", "🚀", "💼", "💯", "⭐", "😇", "🤩"]
+selected_emojis = st.multiselect("Select emojis to append to your text:", emoji_list, default=[])
+
+if selected_emojis:
+    st.text_area(
+        "Your Text with Emojis",
+        f"{user_input} {' '.join(selected_emojis)}",
+        height=100
+    )
