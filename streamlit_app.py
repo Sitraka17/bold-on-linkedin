@@ -43,8 +43,8 @@ def add_emojis(text, emoji):
     return f"{emoji} {text} {emoji}"
 
 # Streamlit app
-st.title("LinkedIn Text Formatter")
-st.write("Enter your text below to transform it into bold, italic, or bold italic text for LinkedIn:")
+st.title("Free Text Formatter")
+st.write("Enter your text below to transform it into bold, italic, or bold italic text:")
 
 # Text input from user
 user_input = st.text_area("Enter your text here")
