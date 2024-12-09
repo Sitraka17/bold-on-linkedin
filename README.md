@@ -22,3 +22,8 @@ Pet Rock $3.95, Millionaire en 6 mois lol
 
 
 Co-Writter ? DAM bro there are a lot of apps like that x) 
+
+
+
+I will try to add some pages ! 
+https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app
