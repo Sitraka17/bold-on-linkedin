@@ -29,3 +29,7 @@ I will try to add some pages !
 
 
 https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app
+
+
+In 2025 : This app has had 148 unique viewers.
+It's not much not much but honest work. 
