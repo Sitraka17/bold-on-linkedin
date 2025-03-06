@@ -28,6 +28,9 @@ Co-Writter ? DAM bro there are a lot of apps like that x)
 I will try to add some pages ! 
 
 
+
+https://evidence.dev/
+
 https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app
 
 
