@@ -29,6 +29,9 @@ I will try to add some pages !
 
 
 
+
+
+# Funny links 
 https://evidence.dev/
 
 https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app
